@@ -1,6 +1,6 @@
 Name: bioformats
-Version: ${release.version}
-Date: ${DATE}
+Version: ${project.version}
+Date: ${date}
 Author: OME
 Maintainer: OME
 Title: bioformats
