@@ -19,12 +19,12 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>bio-formats_plugins</artifactId>
-      <version>${bio-formats.version}</version>
+      <version>${bio-formats_plugins.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>bio-formats-tools</artifactId>
-      <version>${bio-formats.version}</version>
+      <version>${bio-formats-tools.version}</version>
     </dependency>
 
     <!--    <dependency>
@@ -60,7 +60,9 @@
     <date>${maven.build.timestamp}</date>
     <year>2018</year>
     <project.rootdir>${basedir}</project.rootdir>
-    <bio-formats.version>5.7.3</bio-formats.version>
+    <bioformats.version>5.7.3</bioformats.version>
+    <bio-formats_plugins.version>${bioformats.version}</bio-formats_plugins.version>
+    <bio-formats-tools.version>${bioformats.version}</bio-formats-tools.version>
     <imagej1.version>1.48s</imagej1.version>
     <log4j.version>1.2.17</log4j.version>
     <slf4j.version>1.7.6</slf4j.version>
