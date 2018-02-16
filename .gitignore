@@ -1,16 +1,2 @@
-.classpath
-.project
-.settings
 .DS_Store
-artifacts
-build
-components/*/utils/*.class
-emailable-report.html
-index.html
 target
-test-output
-testng-results.xml
-testng.css
-tools/*.jar
-*.log
-*.xpr
