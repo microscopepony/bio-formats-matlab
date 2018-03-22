@@ -23,6 +23,9 @@
          When possible, we advise using the relevant groupId and version
          properties for your dependencies rather than hardcoding them. -->
 
+    <test.output.dir>${basedir}/target/matlab-test-results</test.output.dir>
+    <test.output>${test.output.dir}/report.xml</test.output>
+
     <date>${maven.build.timestamp}</date>
     <year>2018</year>
     <project.rootdir>${basedir}</project.rootdir>
@@ -313,6 +316,25 @@
             </executions>
           </plugin>
           <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>create-test-output-dir</id>
+                <phase>test</phase>
+                <configuration>
+                  <tasks>
+                    <delete dir="${test.output.dir}"/>
+                    <mkdir dir="${test.output.dir}"/>
+                  </tasks>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
             <version>1.6.0</version>
@@ -329,13 +351,13 @@
               <executable>matlab</executable>
               <workingDirectory>${java.io.tmpdir}</workingDirectory>
               <environmentVariables>
-                <MATLABPATH>${project.build.directory}/test-matlab/bio-formats-matlab-${project.version}</MATLABPATH>
+                <MATLABPATH>${project.build.directory}/test-matlab/bio-formats-matlab-${project.version}${path.separator}${basedir}/test</MATLABPATH>
               </environmentVariables>
               <arguments>
                 <argument>-nodesktop</argument>
                 <argument>-nosplash</argument>
                 <argument>-r</argument>
-                <argument>runtests ${project.rootdir}/test</argument>
+                <argument>runbfxunit ${test.output}</argument>
               </arguments>
             </configuration>
           </plugin>
