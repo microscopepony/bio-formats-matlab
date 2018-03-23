@@ -7,26 +7,13 @@
 
   <groupId>ome</groupId>
   <artifactId>bio-formats-matlab</artifactId>
-  <version>5.7.4-SNAPSHOT</version>
+  <version>5.8.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Bio-Formats bundle collection</name>
   <description>Create matlab of Bio-Formats jars and tools for distribution.</description>
   <url>https://www.openmicroscopy.org/bio-formats</url>
   <inceptionYear>2005</inceptionYear>
-
-  <dependencies>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>bio-formats_plugins</artifactId>
-      <version>${bio-formats_plugins.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>bio-formats-tools</artifactId>
-      <version>${bio-formats-tools.version}</version>
-    </dependency>
-  </dependencies>
 
   <properties>
     <!-- If two artifacts on the classpath use two different versions of the
@@ -39,9 +26,8 @@
     <date>${maven.build.timestamp}</date>
     <year>2018</year>
     <project.rootdir>${basedir}</project.rootdir>
-    <bioformats.version>5.7.3</bioformats.version>
-    <bio-formats_plugins.version>${bioformats.version}</bio-formats_plugins.version>
-    <bio-formats-tools.version>${bioformats.version}</bio-formats-tools.version>
+    <bioformats.version>5.8.1-SNAPSHOT</bioformats.version>
+    <bio-formats_package.version>${bioformats.version}</bio-formats_package.version>
     <imagej1.version>1.48s</imagej1.version>
     <log4j.version>1.2.17</log4j.version>
     <slf4j.version>1.7.6</slf4j.version>
@@ -145,6 +131,32 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>versions-maven-plugin</artifactId>
         <version>2.5</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack-ome-xml</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${project.groupId}</groupId>
+                  <artifactId>bioformats_package</artifactId>
+                  <version>${bio-formats_package.version}</version>
+                  <type>jar</type>
+                  <outputDirectory>${project.build.directory}/package-jars</outputDirectory>
+                  <destFileName>bioformats_package.jar</destFileName>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>
