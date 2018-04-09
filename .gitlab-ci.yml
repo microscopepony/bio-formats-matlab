@@ -1,0 +1,24 @@
+# Build and test with MATLAB R2017b
+
+stages:
+  - build
+  - test
+
+build-package:
+  stage: build
+  only:
+    - matlab-R2017b
+  script:
+    - mvn install
+  artifacts:
+    paths:
+      - target/*.zip
+      - target/*.tar.gz
+
+test-package:
+  stage: test
+  only:
+    - matlab-R2017b
+  script:
+    - PATH=/usr/local/MATLAB/R2017b:$PATH
+    - mvn -P test-matlab
