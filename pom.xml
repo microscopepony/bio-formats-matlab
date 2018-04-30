@@ -7,7 +7,7 @@
 
   <groupId>ome</groupId>
   <artifactId>bio-formats-matlab</artifactId>
-  <version>5.8.1-SNAPSHOT</version>
+  <version>5.8.2</version>
   <packaging>pom</packaging>
 
   <name>Bio-Formats bundle collection</name>
@@ -26,7 +26,7 @@
     <date>${maven.build.timestamp}</date>
     <year>2018</year>
     <project.rootdir>${basedir}</project.rootdir>
-    <bioformats.version>5.8.1-SNAPSHOT</bioformats.version>
+    <bioformats.version>5.8.2</bioformats.version>
     <bio-formats_package.version>${bioformats.version}</bio-formats_package.version>
     <imagej1.version>1.48s</imagej1.version>
     <log4j.version>1.2.17</log4j.version>
