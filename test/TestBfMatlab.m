@@ -34,6 +34,10 @@ classdef TestBfMatlab < matlab.unittest.TestCase
 
     methods (TestMethodSetup)
         function BFTestSetUp(self)
+            % Disable upgrade check
+            javaMethod('setProperty', 'java.lang.System', ...
+            'bioformats_can_do_upgrade_check', 'false');
+
             % Get path to Bio-Formats JAR file (assuming it is in Matlab path)
             self.jarPath = which('bioformats_package.jar');
             assert(~isempty(self.jarPath));
