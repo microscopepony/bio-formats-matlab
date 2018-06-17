@@ -10,8 +10,8 @@
   <version>5.8.2</version>
   <packaging>pom</packaging>
 
-  <name>Bio-Formats bundle collection</name>
-  <description>Create matlab of Bio-Formats jars and tools for distribution.</description>
+  <name>Bio-Formats matlab package</name>
+  <description>Create matlab package of Bio-Formats jars and tools for distribution.</description>
   <url>https://www.openmicroscopy.org/bio-formats</url>
   <inceptionYear>2005</inceptionYear>
 
